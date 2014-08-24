@@ -2,7 +2,6 @@
 
 
 
-
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
 first(names, function(firstName){
