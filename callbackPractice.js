@@ -12,8 +12,12 @@ last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
 
-contains('Colt', function(yes){
-  if(yes){
+multiply(num1, num2, function(answer){
+  console.log('The answer is ', answer);
+})
+
+contains(names, 'Colt', function(yes){
+  if(yes === true){
     'Colt is in the array';
   } else {
     'Colt is not in the list';
