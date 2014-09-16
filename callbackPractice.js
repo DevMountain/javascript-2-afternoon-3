@@ -12,7 +12,7 @@ last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
 
-multiply(num1, num2, function(answer){
+multiply(4, 3, function(answer){
   console.log('The answer is ', answer);
 })
 
