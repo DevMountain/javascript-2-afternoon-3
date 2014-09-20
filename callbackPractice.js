@@ -1,24 +1,22 @@
 /* In this repo your job is to write functions to make each function call work properly.
 Below is a sample problem 
 
-  //code here for favNum
+  //code here for sayHi
 
-   var favoriteNumber = 13;
-   favNum(favoriteNumber, function(){
-      console.log('My favorite number is ', + 13);
+   sayHi('Hi Katie', function(thingToSay){
+      alert(thingToSay);
    });
    
 
 and what you should write is the favNum function that makes the code above work, 
     
     
-   var favNum = function(num, cb){
-    cb(num);
+   var sayHi = function(str, cb){
+    cb(str);
    }
 
-   var favoriteNumber = 13;
-   favNum(favoriteNumber, function(){
-      console.log('My favorite number is ', + 13);
+   sayHi('Hi Katie', function(thingToSay){
+      alert(thingToSay); //should alert ('Hi Katie')'
    });
     
     
