@@ -75,11 +75,11 @@ multiply(4, 3, function(answer){
   //Code Here for contains
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-contains(names, 'Colt', function(yes){
-  if(yes === true){
-    'Colt is in the array';
+contains(names, 'Colt', function(result){
+  if(result === true){
+    console.log('Colt is in the array');
   } else {
-    'Colt is not in the array';
+    console.log('Colt is not in the array');
   }
 });
 
@@ -112,7 +112,7 @@ uniq(names, function(uniqArr){
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + 'position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item)
 });
 
 
@@ -148,6 +148,6 @@ var users = [
   },
 ];
 
-getUserById('16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + 'the name of ' + user.name + ' and the address of ' + user.address); 
+getUserById(users, '16t', function(user){
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
