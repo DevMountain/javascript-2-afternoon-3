@@ -1,14 +1,14 @@
 /* In this repo your job is to write functions to make each function call work properly.
 Below is a sample problem 
 
-  //code here for sayHi
+
 
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
    
 
-and what you should write is the favNum function that makes the code above work, 
+and what you should write is the sayHi function that makes the code above work, 
     
     
    var sayHi = function(str, cb){
@@ -19,13 +19,17 @@ and what you should write is the favNum function that makes the code above work,
       alert(thingToSay); //should alert ('Hi Katie')'
    });
     
-    
+    var sayHi = function(str, cb){
+      cb(str);
+    }
 */
 
+//My Code
+var first = function(array, cb) {
+  cb(array[0]);
+};
 
 
-  //Code Here for first
-  
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
   console.log('The first name in names is ', firstName)
@@ -36,11 +40,15 @@ first(names, function(firstName){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+//My Code
+var last = function(array, cb) {
+  cb(array[array.length - 1]);
+};
 
   //Code Here for last
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 last(names, function(lastName){
   console.log('The last name in names is ', lastName);
 });
@@ -52,15 +60,16 @@ last(names, function(lastName){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+//My Code
+var multiply = function(num1, num2, cb) {
+  cb(num1*num2);
+}
+//
 
-
-
-
-  //Code Here for multiply
 
 multiply(4, 3, function(answer){
   console.log('The answer is ', answer); //should console.log 12
-})
+});
 
 
 
@@ -70,11 +79,20 @@ multiply(4, 3, function(answer){
 
 
 
+//My Code
+var contains = function(array, string, callback){
+  var stringIndex = array.indexOf(string);
+  if (array[stringIndex] === string) {
+    callback(true);
+  }
+  else {
+    callback(false);
+  }
+};
 
-
-  //Code Here for contains
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -92,7 +110,15 @@ contains(names, 'Colt', function(result){
 
 
 
-    //Code Here for uniq
+//My Code
+var uniq = function(array, callback) {
+  var myArray = [];
+  for (var i = 0; i < array.length; i++) {
+    myArray.push(array[i]);
+  }
+  callback(myArray);
+}
+///
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -108,9 +134,18 @@ uniq(names, function(uniqArr){
 
 
 
-    //Code Here for each
+//My Code
+var each = function(array, callback) {
+  for (var i = 0; i < array.length; i++) {
+    name = names[i];
+    number = i;
+    callback(name, number)
+  }
+};
+///
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
@@ -125,7 +160,18 @@ each(names, function(item, indice){
 
 
 
- //code here for getUserById
+//My Code
+var getUserById = function(array, stringValue, callback) {
+
+  for (var i = 0; i < users.length; i++) {
+      for (var key in array[i]) {
+      if (stringValue === array[i][key]) {
+        userNum = array[i];
+        callback(userNum);
+      }
+    }
+  };
+};
 
 var users = [
   {
