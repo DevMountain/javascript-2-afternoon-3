@@ -107,9 +107,22 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
+//$$$$$$$$$$$$$$$$$$$$$
 
     //Code Here for uniq
+    var uniq = function(arr, cb){
+      //remove duplicate names in the incoming array
+      var uniqArr = [];
+      var shifted;
+      while(arr.length > 0){
+        shifted = arr.shift();
+        if(arr.indexOf(shifted) === -1){
+          uniqArr.push(shifted);
+        };
+      };
+      //insert newly modified array into callback function
+      cb(uniqArr);
+    };
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -126,10 +139,15 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
+    var each = function(arr, func){
+      for(var i = 0; i < arr.length - 1; i++){
+        func(arr[i], i);
+      }
+    };
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+  console.log('The item in the ' + indice + ' position is ' + item);
 });
 
 
@@ -140,9 +158,17 @@ each(names, function(item, indice){
 
 
 
-
+//$$$$$$$$$$$$$$$$$$
 
  //code here for getUserById
+
+ var getUserById = function(userArr, userName, func){
+  for(var i = 0; i < userArr.length; i++){
+    if(userArr[i].id === userName){
+      func(userArr[i]);
+    }
+  }
+ };
 
 var users = [
   {
@@ -162,9 +188,31 @@ var users = [
     email: 'ryan@gmail.com',
     name: 'Ryan',
     address: '192 East 32 North'
-  },
+  }
 ];
 
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
