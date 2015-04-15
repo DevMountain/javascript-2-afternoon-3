@@ -1,16 +1,16 @@
 /* In this repo your job is to write functions to make each function call work properly.
-Below is a sample problem 
+Below is a sample problem
 
   //code here for sayHi
 
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
-   
 
-and what you should write is the favNum function that makes the code above work, 
-    
-    
+
+and what you should write is the favNum function that makes the code above work,
+
+
    var sayHi = function(str, cb){
     cb(str);
    }
@@ -18,19 +18,22 @@ and what you should write is the favNum function that makes the code above work,
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay); //should alert ('Hi Katie')'
    });
-    
-    
+
+
 */
 
 
 
   //Code Here for first
-  
+
+var first = function(arr, cb){
+  cb(arr[0]);
+};
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
-  console.log('The first name in names is ', firstName)
+  console.log('The first name in names is ' + firstName)
 });
-
 
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
@@ -39,10 +42,13 @@ first(names, function(firstName){
 
 
   //Code Here for last
+var last = function(arr, cb){
+  cb(arr[arr.length - 1]);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
-  console.log('The last name in names is ', lastName);
+  console.log('The last name in names is ' + lastName);
 });
 
 
@@ -54,14 +60,15 @@ last(names, function(lastName){
 
 
 
-
-
   //Code Here for multiply
+var multiply = function(num1, num2, cb) {
+  num1 *= num2
+  cb(num1);
+};
 
 multiply(4, 3, function(answer){
-  console.log('The answer is ', answer); //should console.log 12
-})
-
+  console.log('The answer is', answer); //should console.log 12
+});
 
 
 
@@ -73,6 +80,13 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
+var contains = function(arr, str, cb) {
+  if (arr.indexOf(str) !== -1) {
+    cb(true);
+  } else {
+    cb(false);
+  }
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
@@ -86,13 +100,24 @@ contains(names, 'Colt', function(result){
 
 
 
-
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
     //Code Here for uniq
+var uniq = function(arr, cb) {
+  var obj = {};
+  var tempArray = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (!obj[arr[i]]) {
+      obj[arr[i]] = 1;
+    } else {
+      arr.splice(i, 1);
+    }
+  }
+  cb(arr);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
@@ -101,14 +126,15 @@ uniq(names, function(uniqArr){
 
 
 
-
-
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
-    //Code Here for each
+  //Code Here for each
+var each = function(arr, cb) {
+  cb(arr[1], 1);
+};
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
@@ -118,14 +144,19 @@ each(names, function(item, indice){
 
 
 
-
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
 
 
-
  //code here for getUserById
+var getUserById = function(objArray, userId, cb) {
+  for (var i = 0; i < objArray.length; i++) {
+    if (userId === objArray[i].id) {
+      cb(objArray[i]);
+    }
+  }
+};
 
 var users = [
   {
@@ -149,5 +180,6 @@ var users = [
 ];
 
 getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email +
+  ' the name of ' + user.name + ' and the address of ' + user.address);
 });
