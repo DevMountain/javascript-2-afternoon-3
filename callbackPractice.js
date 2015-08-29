@@ -121,9 +121,9 @@ function uniq(names, printResult) {
 }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-uniq(names, function(uniqArr){
-  console.log('The new names array with all the duplicate items removed is ', uniqArr);
-});
+// uniq(names, function(uniqArr){
+//   console.log('The new names array with all the duplicate items removed is ', uniqArr);
+// });
 
 
 
@@ -132,9 +132,11 @@ uniq(names, function(uniqArr){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-    //Code Here for each
+function each(names, printItemIndex) {
+  for (var i = 0; i < names.length; i++) {
+    printItemIndex(names[i], i);
+  }
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
