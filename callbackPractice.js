@@ -62,9 +62,9 @@ function multiply(num1, num2, logAnswer) {
   logAnswer(num1 * num2);
 }
 
-multiply(4, 3, function(answer){
-  console.log('The answer is ', answer); //should console.log 12
-})
+// multiply(4, 3, function(answer){
+//   console.log('The answer is ', answer); //should console.log 12
+// })
 
 
 
@@ -73,10 +73,16 @@ multiply(4, 3, function(answer){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-
-  //Code Here for contains
+function contains(names, query, printResult) {
+  var isFound = false;
+  for (var i = 0; i < names.length; i++) {
+    if (names[i] === query) {
+      isFound = true;
+      break;
+    }
+  }
+  printResult(isFound);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
