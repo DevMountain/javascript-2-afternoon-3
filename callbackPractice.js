@@ -139,9 +139,9 @@ function each(names, printItemIndex) {
 }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
-});
+// each(names, function(item, indice){
+//   console.log('The item in the ' + indice + ' position is ' + item)
+// });
 
 
 
@@ -150,10 +150,14 @@ each(names, function(item, indice){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-
- //code here for getUserById
+function getUserById(users, id, printResult) {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      printResult(users[i]);
+      break;
+    }
+  }
+}
 
 var users = [
   {
