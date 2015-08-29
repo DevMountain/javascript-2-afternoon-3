@@ -7,7 +7,7 @@ Below is a sample problem
       alert(thingToSay);
    });
    
-
+                  I wanted to add something real quick
 and what you should write is the favNum function that makes the code above work, 
     
     
