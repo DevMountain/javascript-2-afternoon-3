@@ -8,7 +8,7 @@ Below is a sample problem
    });
    
 
-and what you should write is the favNum function that makes the code above work, 
+and what you should write is the sayHi function that makes the code above work, 
     
     
    var sayHi = function(str, cb){
@@ -25,11 +25,15 @@ and what you should write is the favNum function that makes the code above work,
 
 
   //Code Here for first
-  
+
+function first(names, printFirst) {
+  printFirst(names[0]);
+}
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-first(names, function(firstName){
-  console.log('The first name in names is ', firstName)
-});
+// first(names, function(firstName){
+//   console.log('The first name in names is ', firstName)
+// });
 
 
 
@@ -37,30 +41,14 @@ first(names, function(firstName){
 
 
 
-
-  //Code Here for last
+function last(names, printLast) {
+  printLast(names[names.length - 1]);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-last(names, function(lastName){
-  console.log('The last name in names is ', lastName);
-});
-
-
-
-
-
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
-
-
-
-
-
-
-  //Code Here for multiply
-
-multiply(4, 3, function(answer){
-  console.log('The answer is ', answer); //should console.log 12
-})
+// last(names, function(lastName){
+//   console.log('The last name in names is ', lastName);
+// });
 
 
 
@@ -70,34 +58,40 @@ multiply(4, 3, function(answer){
 
 
 
+function multiply(num1, num2, logAnswer) {
+  logAnswer(num1 * num2);
+}
+
+// multiply(4, 3, function(answer){
+//   console.log('The answer is ', answer); //should console.log 12
+// })
 
 
-  //Code Here for contains
 
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
-  } else {
-    console.log('Colt is not in the array');
+
+
+/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+
+
+function contains(names, query, printResult) {
+  var isFound = false;
+  for (var i = 0; i < names.length; i++) {
+    if (names[i] === query) {
+      isFound = true;
+      break;
+    }
   }
-});
-
-
-
-
-
-/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
-
-
-
-
-    //Code Here for uniq
+  printResult(isFound);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-uniq(names, function(uniqArr){
-  console.log('The new names array with all the duplicate items removed is ', uniqArr);
-});
+// contains(names, 'Colt', function(result){
+//   if(result === true){
+//     console.log('Colt is in the array');
+//   } else {
+//     console.log('Colt is not in the array');
+//   }
+// });
 
 
 
@@ -106,14 +100,30 @@ uniq(names, function(uniqArr){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-    //Code Here for each
+function uniq(names, printResult) {
+  var uniqueArr = [];
+  function findElement(query) {
+    var isFound = false;
+    for (var j = 0; j < uniqueArr.length; j++) {
+      if (uniqueArr[j] === query) {
+        isFound = true;
+        break;
+      }
+    }
+    return isFound;
+  }
+  for (var i = 0; i < names.length; i++) {
+    if (!findElement(names[i])) {
+      uniqueArr.push(names[i]);
+    }
+  }
+  printResult(uniqueArr);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
-});
+// uniq(names, function(uniqArr){
+//   console.log('The new names array with all the duplicate items removed is ', uniqArr);
+// });
 
 
 
@@ -122,10 +132,32 @@ each(names, function(item, indice){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
+function each(names, printItemIndex) {
+  for (var i = 0; i < names.length; i++) {
+    printItemIndex(names[i], i);
+  }
+}
+
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+// each(names, function(item, indice){
+//   console.log('The item in the ' + indice + ' position is ' + item)
+// });
 
 
 
- //code here for getUserById
+
+
+/* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
+
+
+function getUserById(users, id, printResult) {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      printResult(users[i]);
+      break;
+    }
+  }
+}
 
 var users = [
   {
@@ -148,6 +180,6 @@ var users = [
   },
 ];
 
-getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
-});
+// getUserById(users, '16t', function(user){
+//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+// });
