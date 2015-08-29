@@ -85,13 +85,13 @@ function contains(names, query, printResult) {
 }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
-  } else {
-    console.log('Colt is not in the array');
-  }
-});
+// contains(names, 'Colt', function(result){
+//   if(result === true){
+//     console.log('Colt is in the array');
+//   } else {
+//     console.log('Colt is not in the array');
+//   }
+// });
 
 
 
@@ -100,9 +100,25 @@ contains(names, 'Colt', function(result){
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
 
-
-
-    //Code Here for uniq
+function uniq(names, printResult) {
+  var uniqueArr = [];
+  function findElement(query) {
+    var isFound = false;
+    for (var j = 0; j < uniqueArr.length; j++) {
+      if (uniqueArr[j] === query) {
+        isFound = true;
+        break;
+      }
+    }
+    return isFound;
+  }
+  for (var i = 0; i < names.length; i++) {
+    if (!findElement(names[i])) {
+      uniqueArr.push(names[i]);
+    }
+  }
+  printResult(uniqueArr);
+}
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
