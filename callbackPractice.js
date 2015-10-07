@@ -8,7 +8,7 @@ Below is a sample problem
    });
    
 
-and what you should write is the favNum function that makes the code above work, 
+and what you should write is the sayHi function that makes the code above work, 
     
     
    var sayHi = function(str, cb){
@@ -26,9 +26,10 @@ and what you should write is the favNum function that makes the code above work,
 
   //Code Here for first
   
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
-  console.log('The first name in names is ', firstName)
+  console.log('The first name in names is ' + firstName)
 });
 
 
@@ -42,7 +43,7 @@ first(names, function(firstName){
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
-  console.log('The last name in names is ', lastName);
+  console.log('The last name in names is ' + lastName);
 });
 
 
@@ -59,7 +60,7 @@ last(names, function(lastName){
   //Code Here for multiply
 
 multiply(4, 3, function(answer){
-  console.log('The answer is ', answer); //should console.log 12
+  console.log('The answer is ' + answer); //should console.log 12
 })
 
 
