@@ -41,7 +41,6 @@ first(names, function(firstName){
 
   //Code Here for last
 
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
 });
@@ -75,7 +74,6 @@ multiply(4, 3, function(answer){
 
   //Code Here for contains
 
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -95,7 +93,6 @@ contains(names, 'Colt', function(result){
 
     //Code Here for uniq
 
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -111,7 +108,6 @@ uniq(names, function(uniqArr){
 
     //Code Here for each
 
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
