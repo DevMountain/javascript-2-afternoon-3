@@ -112,8 +112,8 @@ uniq(names, function(uniqArr){
     //Code Here for each
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+each(names, function(item, index){
+  console.log('The item in the ' + index + ' position is ' + item)
 });
 
 
@@ -146,7 +146,7 @@ var users = [
     email: 'ryan@gmail.com',
     name: 'Ryan',
     address: '192 East 32 North'
-  },
+  }
 ];
 
 getUserById(users, '16t', function(user){
