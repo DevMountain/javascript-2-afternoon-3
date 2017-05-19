@@ -136,6 +136,14 @@ each(names, function(item, indice){
 
  //Code Here
 
+   function getUserById (arr,id,cb) {
+     for (var i = 0;i < arr.length; i++){
+      if(arr[i].id === id){
+        cb(arr[i]);
+        }
+     }
+   }
+
 var users = [
   {
     id: '12d',
