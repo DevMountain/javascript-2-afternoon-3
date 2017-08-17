@@ -7,7 +7,7 @@ Callback Practice
 - Better understand callbacks in Javascript by completing a series of examples
 
 ## Directions
-- Fork this repo, clone your fork, then complete the examples in callbackPractice.js
+- Fork this repo, clone your fork, then complete all **7** exercises in callbackPractice.js
 
 ## Contributions
 If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
