@@ -1,14 +1,14 @@
 /* In this repo your job is to write functions to make each function call work properly.
-Below is a sample problem 
+Below is a sample problem
 
   //code here for sayHi
 
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
-   
-and what you should write is the sayHi function that makes the code above work, 
-    
+
+and what you should write is the sayHi function that makes the code above work,
+
    var sayHi = function(str, cb){
     cb(str);
    }
@@ -16,15 +16,18 @@ and what you should write is the sayHi function that makes the code above work,
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay); //should alert ('Hi Katie')'
    });
-    
+
 */
 
 
 // 1. Write a function called first that returns the first item of the array using a callback function
 
   // Code Here
+  var first = function(arr,fn){
+    var firstName = arr[0];
+    fn(firstName);
+  }
 
-  
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
   console.log('The first name in names is ' + firstName);
@@ -36,7 +39,10 @@ first(names, function(firstName){
 // 2. Write a function called last which returns the last item of the array using a callback function.
 
   //Code Here
-
+var last = function(arr,fn){
+  var lastName = arr[arr.length-1];
+  fn(lastName);
+}
 
 
 last(names, function(lastName){
@@ -46,10 +52,13 @@ last(names, function(lastName){
 
 
 
-// 3. Write a function called multiply that multiplies two numbers. Invoke the callback with the result of the multiplication. 
+// 3. Write a function called multiply that multiplies two numbers. Invoke the callback with the result of the multiplication.
 
   //Code Here
-
+var multiply = function(a,b,fn){
+  var total = a*b;
+  fn(total);
+}
 
 
 multiply(4, 3, function(answer){
@@ -58,12 +67,19 @@ multiply(4, 3, function(answer){
 
 
 
-// 4. Write a function called contains that checks if a name exists in an array. 
-// If it does, invoke the callback with true as an argument. 
+// 4. Write a function called contains that checks if a name exists in an array.
+// If it does, invoke the callback with true as an argument.
 // If the name does not exist, invoke the callback with false as an argument.
 
-  //Code Here 
-
+  //Code Here
+var contains = function(arr,name,fn){
+  for(var i = 0; i<arr.length; i++){
+    if(arr[i] === name){
+      fn(true);
+    }
+  }
+  fn(false);
+}
 
 
 
@@ -81,7 +97,19 @@ contains(names, 'Colt', function(result){
 // Invoke the callback with the modified array as an argument.
 
   //Code Here
+var uniq = function(arr,fn){
+  // arr = arr.filter(function(item, index, inputArray){
+  //   return inputArray.indexOf(item) == index;
+  // });
 
+  var newArr = [];
+  for(var i = 0; i<arr.length; i++){
+    if(newArr.indexOf(arr[i]) === -1){
+      newArr.push(arr[i]);
+    }
+  }
+  fn(newArr);
+}
 
 
 uniq(names, function(uniqArr){
@@ -91,8 +119,12 @@ uniq(names, function(uniqArr){
 
 // 6. Write a function called each that takes in an array of names. For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 
-    //Code Here 
-
+    //Code Here
+var each = function(arr,fn){
+  for(var i = 0; i<arr.length; i++){
+    fn(arr[i],i);
+  }
+}
 
 
 each(names, function(item, indice){
@@ -105,7 +137,17 @@ each(names, function(item, indice){
 // When the correct user object is found, invoke the callback with the user object as an argument.
 
 // Code here
+var getUserById = function(obj,value,fn){
+  objKeys = Object.keys();
+  for (var i = 0; i< objKeys.length; i++){
+    for (var j =0; j<objKeys[i].length;j++){
+      if(objKeys[i][j] === value){
+        fn(objKeys[i]);
+      }
+    }
+  }
 
+}
 
 
 var users = [
@@ -130,5 +172,5 @@ var users = [
 ];
 
 getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address);
 });
