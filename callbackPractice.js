@@ -139,6 +139,7 @@ each(names, function(item, indice){
 // Code here
 var getUserById = function(obj,value,fn){
   objKeys = Object.keys();
+  console.log (objKeys);
   for (var i = 0; i< objKeys.length; i++){
     for (var j =0; j<objKeys[i].length;j++){
       if(objKeys[i][j] === value){
