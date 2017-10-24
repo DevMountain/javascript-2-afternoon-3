@@ -30,7 +30,7 @@ first(names, function(firstName){
 
 
 
-// 2. Write a function called last that takes in an array and a callback function, then invokes the callback, passing in the last element in the array.
+// 2. Write a function called last that takes in an array and a callback function, then invokes the callback, passing in the last element in the array as the argument.
 
   //Code Here
 
