@@ -20,12 +20,13 @@ and what you should write is the sayHi function that makes the code above work,
 */
 
 
-// 1. Write a function called first that returns the first item of the array using a callback function
+// 1. Write a function called first that takes in an array and a callback function as parameters, then returns the callback function, passing in the first element in the array as it's argument.  (see the sayHi function above for reference)
 
-  // Code Here
+  // Code Here 
 
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
 first(names, function(firstName){
   console.log('The first name in names is ' + firstName);
   return firstName;
@@ -33,10 +34,9 @@ first(names, function(firstName){
 
 
 
-// 2. Write a function called last which returns the last item of the array using a callback function.
+// 2. Write a function called last that takes in an array and a callback function and returns the callback, passing in the last element in the array.
 
   //Code Here
-
 
 
 last(names, function(lastName){
