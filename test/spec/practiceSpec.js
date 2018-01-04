@@ -1,15 +1,15 @@
 describe('callbackPractice', function () {
   describe('logFirstName', function() {
     it('should exist and be a function', function() {
-      expect(logFirstName).toBeDefined();
-      expect(logFirstName).toEqual( jasmine.any(Function) );
+      expect( logFirstName ).toBeDefined();
+      expect( logFirstName ).toEqual( jasmine.any(Function) );
     });
   });
 
 	describe('first', function () {
 		it('should exist and be a function', function () {
-			expect(first).toBeDefined();
-			expect(first).toEqual(jasmine.any(Function));
+			expect( first ).toBeDefined();
+			expect( first ).toEqual( jasmine.any(Function) );
     });
 
     it('should call logFirstName with the first item of an array', function() {
@@ -17,39 +17,59 @@ describe('callbackPractice', function () {
 
       var cbSpy = jasmine.createSpy( logFirstName );
 
-      var testCall = first( arr, cbSpy );
+      first( arr, cbSpy );
 
       expect( cbSpy ).toHaveBeenCalledWith( arr[0] );
     });
   });
+
+  describe('logLastName', function() {
+    it('should exist and be a function', function() {
+      expect( logLastName ).toBeDefined();
+      expect( logLastName ).toEqual( jasmine.any(Function) );
+    });
+  })
   
 	describe('last', function () {
 		it('should exist and be a function', function () {
-			expect(last).toBeDefined();
-			expect(last).toEqual(jasmine.any(Function));
-		})
-		it('should return the last item of a passed array to the callback', function () {
-			var arr = ['test', 'no'];
-			var callback = jasmine.createSpy(function (str) {
-				return str
-			})
-			var test = last(arr, callback);
-			expect(callback).toHaveBeenCalledWith('no');
-		})
-	})
+			expect( last ).toBeDefined();
+			expect( last ).toEqual(jasmine.any(Function));
+    });
+
+    it('should call logLastName with the last item of an array', function() {
+      var arr = [ 'a', 'b', 'c', 'd' ];
+
+      var cbSpy = jasmine.createSpy( logLastName );
+
+      last( arr, cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( arr[ arr.length - 1 ] );
+    });
+  });
+  
+  describe('logProduct', function() {
+    it('should exist and be a function', function() {
+      expect( logProduct ).toBeDefined();
+      expect( logProduct ).toEqual( jasmine.any(Function) );
+    });
+  });
+
+
 	describe('multiply', function () {
 		it('should exist and be a function', function () {
-			expect(multiply).toBeDefined();
-			expect(multiply).toEqual(jasmine.any(Function));
-		})
-		it('should multiply the first two parameters and pass the result to the callback', function () {
-			var callback = jasmine.createSpy(function (num) {
-				return num
-			})
-			var test = multiply(25, 4, callback);
-			expect(callback).toHaveBeenCalledWith(100);
-		})
-	})
+			expect( multiply ).toBeDefined();
+			expect( multiply ).toEqual( jasmine.any(Function) );
+    })
+    
+    it('should call logProduct with the product of given numbers', function() {
+      var cbSpy = jasmine.createSpy( logProduct );
+
+      multiply( 6, 5, cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( 30 );
+    });
+  });
+  
 	describe('contains', function () {
 		var arr, callback;
 		beforeEach(function () {

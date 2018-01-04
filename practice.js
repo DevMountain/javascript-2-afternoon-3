@@ -33,7 +33,8 @@ function first( arr, cb ) {
 }
 
 /*
-  Invoke your first function and pass in the given names array for the first argument and pass in the logFirstName function you created for the second argument.
+  Invoke the first function and pass in the given names array for the first argument and pass in the logFirstName function you created for the second argument.
+  Once your have called the last function, take a look inside your developer tools on the Console tab. You should see Tyler printed to console.
 */
 
 //Code Here
@@ -43,37 +44,69 @@ first( names, logFirstName );
 
 ////////// PROBLEM 2 //////////
 
+// Do not edit the code below.
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+// Do not edit the code above.
+
 /*
-  Write a function called last that takes in an array and a callback function. 
-  Then invoke the callback, passing in the last element in the array as the argument.
+  Write a function called logLastName that has a parameter called lastName.
+  The function should console.log the given argument for lastName.
 */
 
 //Code Here
+function logLastName( lastName ) {
+  console.log(lastName);
+}
 
-// Do not edit the code below.
-last(names, function(lastName){
-  console.log('The last name in names is ' + lastName);
-  return lastName;
-});
-// Do not edit the code above.
+/*
+  Write a function called last that has two parameters, arr ( an array ) and cb ( a callback function ).
+  Inside the function, invoke the callback function and pass in the last element of the given array argument.
+*/
+
+//Code Here
+function last( arr, cb ) {
+  cb( arr[ arr.length - 1 ] );
+}
+
+/*
+  Invoke the last function and pass in the given names array for the last argument and pass in the logLastName function you created for the second argument.
+  Once your have called the last function, take a look inside your developer tools on the Console tab. You should see Cahlan printed to console.
+*/
+
+//Code Here
+last( names, logLastName );
 
 
 
 ////////// PROBLEM 3 //////////
 
 /*
-  Write a function called multiply that takes in three parameters: two numbers and a callback function.  
-  Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
+  Write a function called logProduct that has a parameter called product.
+  The function should console.log the given argument for product.
 */
 
 //Code Here
+function logProduct( product ) {
+  console.log( product );
+}
 
-// Do not edit the code below.
-multiply(4, 3, function(answer){
-  console.log('The answer is ' + answer); //should console.log 12
-});
-// Do not edit the code above.
+/*
+  Write a function called multiply that takes in three parameters: num1, num2, and cb.
+  Inside the function, invoke the callback function and pass in the answer of num1 multiplied by num2.
+*/
 
+//Code Here
+function multiply( num1, num2, cb ) {
+  cb( num1 * num2 );
+}
+
+/*
+  Invoke the multiply function and pass in two numbers and the logProduct function you created.
+  Once you have called the multiply function, take a look inside your developer tools on the Console tab. You should see the product printed to console.
+*/
+
+//Code Here
+multiply( 2, 3, logProduct );
 
 
 ////////// PROBLEM 4 //////////
