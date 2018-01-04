@@ -1,18 +1,28 @@
 describe('callbackPractice', function () {
+  describe('logFirstName', function() {
+    it('should exist and be a function', function() {
+      expect(logFirstName).toBeDefined();
+      expect(logFirstName).toEqual( jasmine.any(Function) );
+    });
+  });
+
 	describe('first', function () {
 		it('should exist and be a function', function () {
 			expect(first).toBeDefined();
 			expect(first).toEqual(jasmine.any(Function));
-		})
-		it('should return the first item of a passed array to the callback', function () {
-			var arr = ['test', 'no'];
-			var callback = jasmine.createSpy(function (str) {
-				return str
-			})
-			var test = first(arr, callback);
-			expect(callback).toHaveBeenCalledWith('test');
-		})
-	})
+    });
+
+    it('should call logFirstName with the first item of an array', function() {
+      var arr = [ 'a', 'b', 'c', 'd' ];
+
+      var cbSpy = jasmine.createSpy( logFirstName );
+
+      var testCall = first( arr, cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( arr[0] );
+    });
+  });
+  
 	describe('last', function () {
 		it('should exist and be a function', function () {
 			expect(last).toBeDefined();

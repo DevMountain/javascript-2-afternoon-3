@@ -4,39 +4,40 @@
   Failed tests will be indicated by a red X.
 
   You can refresh the page at any time to re-run all the tests.
-
-  In this repo your job is to write functions to make each function call work properly.
-
-  Here's an example of code that will be given to you:
-
-  sayHi('Hi Katie', function(thingToSay){
-    alert(thingToSay);
-  });
-
-  It would be your job to create the sayHi function:
-
-  var sayHi = function(str, cb){
-    cb(str);
-  }
 */
 
 ////////// PROBLEM 1 //////////
 
-/*
-  Write a function called first that takes in two parameters, an array and a callback function.
-  Then invoke the callback function, passing in the first element in the array as it's argument.
-*/
-
-// Code Here 
-
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-
-first(names, function(firstName){
-  console.log('The first name in names is ' + firstName);
-  return firstName;
-});
 // Do not edit the code above.
+
+/*
+  Write a function called logFirstName that has a parameter called firstName.
+  The function should console.log the given argument for firstName.
+*/
+
+//Code Here
+function logFirstName( firstName ) {
+  console.log(firstName);
+}
+
+/*
+  Write a function called first that has two parameters, arr ( an array ) and cb ( a callback function ).
+  Inside the function, invoke the callback function and pass in the first element of the given array argument.
+*/
+
+//Code Here
+function first( arr, cb ) {
+  cb( arr[0] );
+}
+
+/*
+  Invoke your first function and pass in the given names array for the first argument and pass in the logFirstName function you created for the second argument.
+*/
+
+//Code Here
+first( names, logFirstName );
 
 
 
