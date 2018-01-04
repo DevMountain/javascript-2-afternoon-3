@@ -69,33 +69,41 @@ describe('callbackPractice', function () {
       expect( cbSpy ).toHaveBeenCalledWith( 30 );
     });
   });
-  
-	describe('contains', function () {
-		var arr, callback;
-		beforeEach(function () {
-			callback = jasmine.createSpy(function (bool) {
-				return bool
-			})
-			arr = ['tester', 'stuart', 'jim']
-		})
-		it('should exist and be a function', function () {
-			expect(contains).toBeDefined();
-			expect(contains).toEqual(jasmine.any(Function));
-		})
 
-		it('should return a boolean to the callback', function () {
-			contains(arr, 'tester', callback);
-			expect(callback).toHaveBeenCalledWith(jasmine.any(Boolean));
-		})
-		it('should return true to the callback if the name is in the array', function () {
-			var trueTest = contains(arr, 'tester', callback);
-			expect(callback).toHaveBeenCalledWith(true);
-		})
-		it('should return false to the callback if the name is not in the array', function () {
-			var falseTest = contains(arr, 'craig', callback);
-			expect(callback).toHaveBeenCalledWith(false);
-		})
-	})
+  describe("printContainMessage", function() {
+    it('should exist and be a function', function() {
+      expect( printContainMessage ).toBeDefined();
+      expect( printContainMessage ).toEqual( jasmine.any(Function) );
+    });
+  });
+
+  describe("contains", function() {
+    it('should exist and be a function', function() {
+      expect( contains ).toBeDefined();
+      expect( printContainMessage ).toEqual( jasmine.any(Function) );
+    });
+
+    it('should call printContainMessage with a true statement', function() {
+      var names = [ "Bob", "Joe" ];
+
+      var cbSpy = jasmine.createSpy( printContainMessage );
+
+      contains( names, "Bob", cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( "Bob", true );
+    });
+
+    it('should call printContainMessage with a false statement', function() {
+      var names = [ "James", "Jeremy" ];
+
+      var cbSpy = jasmine.createSpy( printContainMessage );
+
+      contains( names, "Missy", cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( "Missy", false );
+    });
+  });
+  
 	describe('uniq', function () {
 		var arr, callback;
 		beforeEach(function () {

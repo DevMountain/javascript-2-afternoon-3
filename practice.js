@@ -9,7 +9,7 @@
 ////////// PROBLEM 1 //////////
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
 // Do not edit the code above.
 
 /*
@@ -45,7 +45,7 @@ first( names, logFirstName );
 ////////// PROBLEM 2 //////////
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
 // Do not edit the code above.
 
 /*
@@ -109,26 +109,67 @@ function multiply( num1, num2, cb ) {
 multiply( 2, 3, logProduct );
 
 
+
 ////////// PROBLEM 4 //////////
 
+// Do not edit the code below.
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
+// Do not edit the code above.
+
 /*
-  Write a function called contains that takes in three parameters: an array, a name and a callback.  
-  Check if the name exists in the array. 
-  If it does, invoke the callback with true as the argument. 
-  If the name does not exist, invoke the callback with false as the argument.
+  Write a function called printContainMessage that two paramets: name and result.
+  The function should check to see if the result is true or false.
+  If the result is true, the function should console.log "name is in the array".
+  If the result is false, the function should console.log "name is not in the array"
+
+  Example: printContainMessage("James", false) -> console.log("James is not in the array")
+  Example: printContainMessage("Jessica", true) -> console.log("Jessica is in the array")
 */
 
-//Code Here 
-
-// Do not edit the code below.
-contains(names, 'Colt', function(result){
-  if(result === true){
-    console.log('Colt is in the array');
-  } else {
-    console.log('Colt is not in the array');
+//Code Here
+function printContainMessage( name, result ) {
+  if ( result === true ) {
+    console.log(name + " is in the array");
+  } else if ( result === false ) {
+    console.log(name + " is not in the array");
   }
-});
-// Do not edit the code above.
+}
+
+/*
+  Write a function called contains that takes that has three parameters: array, name, and cb.
+  Inside the function, check to see if the name is inside the array.
+  If it is inside the array, call the callback function with the name and true.
+  If it is not inside the array, call the callback function with the name and false.
+*/
+
+//Code Here
+function contains( array, name, cb ) {
+  var result = array.includes( name );
+
+  cb( name, result );
+}
+
+// OR
+
+function contains( array, name, cb ) {
+  var result = false;
+
+  for ( var i = 0; i < array.length; i++ ) {
+    if ( array[i] === name ) {
+      result = true;
+    }
+  }
+
+  cb( name, result );
+}
+
+/*
+  Invoke the contains function and pass in the given names array, "Joe", and the printContainMessage function you created earlier.
+  Once you have called the contains function, take a look inside your developer tools on the Console tab. You should see "Joe is in the array" printed to console.
+*/
+
+//Code Here
+contains( names, "Joe", printContainMessage );
 
 
 
