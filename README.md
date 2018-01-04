@@ -14,6 +14,10 @@ In this project, we'll provide practice JavaScript problems to help you better u
 
 Complete all <b>7</b> activities inside of `callbackPractice.js` to make the spec runner pass it's tests. In order to check the progress of the spec runner, open `SpecRunner.html` with your browser. Remember to commit and push your code often. Good luck!
 
+## Tips and Tricks
+
+One of the biggest tools at the developer's disposal is the browser's built-in debugger. To use it, open `index.html` with your browser. Another great tool for small and isolated pieces of code is <a href="http://www.pythontutor.com/visualize.html#">Pyton Tutor</a>. Just make sure to change the code to `JavaScript ES6`.
+
 ## Contributions
 
 If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
