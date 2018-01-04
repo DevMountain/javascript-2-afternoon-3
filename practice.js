@@ -206,29 +206,49 @@ unique( names, printUnique );
 
 ////////// PROBLEM 6 //////////
 
-/* 
-  Write a function called each that takes in an array of names and a callback function. 
-  For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
+// Do not edit the code below.
+var names = ['Tyler', 'Cahlan', 'Ryan'];
+// Do not edit the code above.
+
+/*
+  Write a function called printEachIndexAndValue that takes in an index and a value.
+  The function should console log "The element in the index position is value".
+
+  Example: printEachIndexAndValue( 1, "Bob" ) -> console.log("The element in the 1 position is Bob");
+  Example: printEachIndexAndValue( 5, "Joe" ) -> console.log("The element in the 5 position is Joe");
 */
 
-//Code Here 
+//Code Here
+function printEachIndexAndValue( index, value ) {
+  console.log("The element in the " + index + " position is " + value);
+}
 
-// Do not edit the code below.
-each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
-});
-// Do not edit the code above.
+/*
+  Write a function called each that has two parameters: array and cb.
+  The function should loop through the array can call the call back function once for every element.
+
+  Remember to pass the given elements index and value to the call back function.
+*/
+
+//Code Here
+function each( array, cb ) {
+  for( var i = 0; i < array.length; i++ ) {
+    cb( i, array[i] );
+  } 
+}
+
+/*
+  Invoke the each function and pass in the given names array and the printUnique function you created earlier.
+  Once you have called the unique function, take a look inside your developer tools on the Console tab.
+  You should see three console logs: "The element in the 0 position is Tyler", "The element in the 1 position is Cahlan", "The element in the 2 position is Ryan"
+*/
+
+//Code Here
+each( names, printEachIndexAndValue );
 
 
 
 ////////// PROBLEM 7 //////////
-
-/*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
-  When the correct user object is found, invoke the callback with the user object as an argument.
-*/
-
-// Code here
 
 // Do not edit the code below.
 var users = [
@@ -251,8 +271,17 @@ var users = [
     address: '192 East 32 North'
   },
 ];
+// Do not edit the code above.
+
+/*
+  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
+  When the correct user object is found, invoke the callback with the user object as an argument.
+*/
+
+// Code here
+
+
 
 getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
-// Do not edit the code above.

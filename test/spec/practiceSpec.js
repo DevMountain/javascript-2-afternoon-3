@@ -128,27 +128,31 @@ describe('callbackPractice', function () {
     });
   });
 
-	describe('each', function () {
-		var arr, callback;
-		beforeEach(function () {
-			callback = jasmine.createSpy(function (item, index) {
-				return;
-			})
-			arr = ['tester', 'alice', 'bob', 'tester', 'charlie', 'danielle', 'tester', 'charlie', 'alice']
-		})
-		it('should exist and be a function', function () {
-			expect(each).toBeDefined();
-			expect(each).toEqual(jasmine.any(Function));
-		})
-		it('should return an item and an index to the callback', function () {
-			each(arr, callback);
-			expect(callback).toHaveBeenCalledWith(jasmine.any(String), jasmine.any(Number));
-		})
-		it('should call the callback once for each item in the array', function () {
-			each(arr, callback);
-			expect(callback.calls.count()).toBe(arr.length);
-		})
-	})
+  describe("printEachIndexAndValue", function() {
+    it('should exist and be a function', function() {
+      expect( printEachIndexAndValue ).toBeDefined();
+      expect( printEachIndexAndValue ).toEqual( jasmine.any(Function) );
+    });
+  });
+
+  describe('each', function() {
+    it('should exist and be a function', function() {
+      expect( each ).toBeDefined();
+      expect( each ).toEqual( jasmine.any(Function) );
+    });
+
+    it('should call printEachIndexAndValue for each element in a given array', function() {
+      var arr = [ 'a', 'b', 'c' ];
+      
+      var cbSpy = jasmine.createSpy( printEachIndexAndValue );
+
+      each( arr, cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( jasmine.any(Number), jasmine.any(String) );
+      expect( cbSpy.calls.count() ).toEqual( arr.length );
+    });
+  });
+
 	describe('getUserById', function () {
 		var arr, callback;
 		beforeEach(function () {
