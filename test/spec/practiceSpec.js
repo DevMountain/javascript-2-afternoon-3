@@ -103,29 +103,31 @@ describe('callbackPractice', function () {
       expect( cbSpy ).toHaveBeenCalledWith( "Missy", false );
     });
   });
-  
-	describe('uniq', function () {
-		var arr, callback;
-		beforeEach(function () {
-			callback = jasmine.createSpy(function (arr) {
-				return arr;
-			})
-			arr = ['tester', 'alice', 'bob', 'tester', 'charlie', 'danielle', 'tester', 'charlie', 'alice']
-		})
-		it('should exist and be a function', function () {
-			expect(uniq).toBeDefined();
-			expect(uniq).toEqual(jasmine.any(Function));
-		})
-		it('should return an array to the callback', function () {
-			uniq(arr, callback);
-			expect(callback).toHaveBeenCalledWith(jasmine.any(Array));
-		})
-		it('should return an array to the callback where all duplicates are removed', function () {
-			uniq(arr, callback);
-			var expected = ['tester', 'alice', 'bob', 'charlie', 'danielle']
-			expect(callback.calls.argsFor(0)[0].sort()).toEqual(expected.sort())
-		})
-	})
+
+  describe("printUnique", function() {
+    it('should exist and be a function', function() {
+      expect( printUnique ).toBeDefined();
+      expect( printUnique ).toEqual( jasmine.any(Function) );
+    });
+  });
+
+  describe("unique", function() {
+    it('should exist and be a function', function() {
+      expect( unique ).toBeDefined();
+      expect( unique ).toEqual( jasmine.any(Function) );
+    });
+
+    it('should call printUnique with a unique array', function() {
+      var arr = [ "Bob", "Bob", "Joe", "Joe" ];
+
+      var cbSpy= jasmine.createSpy( printUnique );
+
+      unique( arr, cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith([ "Bob", "Joe" ]);
+    });
+  });
+
 	describe('each', function () {
 		var arr, callback;
 		beforeEach(function () {

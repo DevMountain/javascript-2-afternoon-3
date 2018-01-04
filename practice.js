@@ -149,20 +149,6 @@ function contains( array, name, cb ) {
   cb( name, result );
 }
 
-// OR
-
-function contains( array, name, cb ) {
-  var result = false;
-
-  for ( var i = 0; i < array.length; i++ ) {
-    if ( array[i] === name ) {
-      result = true;
-    }
-  }
-
-  cb( name, result );
-}
-
 /*
   Invoke the contains function and pass in the given names array, "Joe", and the printContainMessage function you created earlier.
   Once you have called the contains function, take a look inside your developer tools on the Console tab. You should see "Joe is in the array" printed to console.
@@ -175,18 +161,46 @@ contains( names, "Joe", printContainMessage );
 
 ////////// PROBLEM 5 //////////
 
+// Do not edit the code below.
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Tyler', 'Missy', 'Cahlan', 'Joe'];
+// Do not edit the code above.
+
+
 /*
-  Write a function called uniq that takes in an array and a callback function.
-  Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
+  Write a function called printUnique that takes in an array.
+  The function should console log the unique array.
 */
 
 //Code Here
+function printUnique( array ) {
+  console.log( array );
+}
 
-// Do not edit the code below.
-uniq(names, function(uniqArr){
-  console.log('The new names array with all the duplicate items removed is ', uniqArr);
-});
-// Do not edit the code above.
+/*
+  Write a function called unique that takes has two parameters: array and cb.
+  The function should remove all duplicates from an array and call the callback function with the new array.
+*/
+
+//Code Here
+function unique( array, cb ) {
+  var uniqueArray = [];
+
+  for( var i = 0; i < array.length; i++ ) {
+    if ( !uniqueArray.includes( array[i] ) ) {
+      uniqueArray.push( array[i] );
+    }
+  }
+
+  cb( uniqueArray );
+}
+
+/*
+  Invoke the unique function and pass in the given names array and the printUnique function you created earlier.
+  Once you have called the unique function, take a look inside your developer tools on the Console tab. You should see ["Tyler", "Cahlan", "Ryan", "Missy", "Joe"] printed to console.
+*/
+
+//Code Here
+unique( names, printUnique );
 
 
 
