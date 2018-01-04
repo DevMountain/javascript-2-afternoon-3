@@ -263,25 +263,47 @@ var users = [
     email: 'cahlan@gmail.com',
     name: 'Cahlan',
     address: '135 East 320 North'
-  },
-  {
-    id: '16t',
-    email: 'ryan@gmail.com',
-    name: 'Ryan',
-    address: '192 East 32 North'
-  },
+  }
 ];
 // Do not edit the code above.
 
 /*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
-  When the correct user object is found, invoke the callback with the user object as an argument.
+  Write a function called printUserProps that has one parameter: user
+  The function should console log "The user with the id of user.id has the email of user.email, the name of user.name, and the address of user.address".
+
+  Example: printUserProps({ id: 0, email: 'email@email.com', name: 'Bob' address: '111 street' }) -> console.log("The user with the id of 0 has the email of email@email.com, the name of Bob, and the address of 111 street")
 */
 
-// Code here
+//Code Here
+function printUserProps( user ) {
+  console.log("The user with the id of " + user.id + " has the email of " + user.email + ", the name of " + user.name + ", and the address of " + user.address );
+}
 
+/*
+  Write a function called getUserById that has three parameters: array, id, and cb.
+  The function should look through the array to find the object with the given id.
+  The function should then call the given call back function with the found object.
+*/
 
+//Code Here
+function getUserById( array, id, cb ) {
+  var user = {};
 
-getUserById(users, '16t', function(user){
-  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
-});
+  for( var i = 0; i < array.length; i++ ) {
+    if( array[i].id === id ) {
+      user = array[i];
+    }
+  }
+
+  cb( user );
+}
+
+/*
+  Invoke the getUserById function and pass in the given users array, '15a', and the printUserProps function you created earlier.
+  Once you have called the getUserById function, take a look inside your developer tools on the Console tab.
+  You should see the following console log: "The user with the id of 15a has the email of cahlan@gmail.com, the name of Cahlan, and the address of 135 East 320 North"
+*/
+
+//Code Here
+getUserById( users, '15a', printUserProps );
+

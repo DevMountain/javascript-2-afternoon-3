@@ -161,46 +161,27 @@ describe('callbackPractice', function () {
     });
   });
 
-	describe('getUserById', function () {
-		var arr, callback;
-		beforeEach(function () {
-			callback = jasmine.createSpy(function (obj) {
-				return;
-			});
-			arr = [
-				{
-					id: '12d',
-					email: 'test@gmail.com',
-					name: 'Tester 1',
-					address: '167 East 500 North'
-				},
-				{
-					id: '15a',
-					email: 'test2@gmail.com',
-					name: 'Tester 2',
-					address: '135 East 320 North'
-				},
-				{
-					id: '16t',
-					email: 'test3@gmail.com',
-					name: 'Tester 3',
-					address: '192 East 32 North'
-				},
-			]
-		})
-		it('should exist and be a function', function () {
-			expect(getUserById).toBeDefined();
-			expect(getUserById).toEqual(jasmine.any(Function));
-		})
-		it('should pass an object to the callback', function () {
-			getUserById(arr, '16t', callback);
-			expect(callback).toHaveBeenCalledWith(jasmine.any(Object));
-		})
-		it('should pass an object with email, address, and name properties to the callback', function () {
-			getUserById(arr, '16t', callback);
-			expect(callback.calls.argsFor(0)[0].hasOwnProperty('email')).toBe(true);
-			expect(callback.calls.argsFor(0)[0].hasOwnProperty('address')).toBe(true);
-			expect(callback.calls.argsFor(0)[0].hasOwnProperty('name')).toBe(true);
-		})
-	})
-})
+  describe("printUserProps", function() {
+    it('should exist and be a function', function() {
+      expect( printUserProps ).toBeDefined();
+      expect( printUserProps ).toEqual( jasmine.any(Function) );
+    });
+  });
+
+  describe("getUserById", function() {
+    it('should exist and be a function', function() {
+      expect( getUserById ).toBeDefined();
+      expect( getUserById ).toEqual( jasmine.any(Function) );
+    });
+
+    it('should call printUserProps with the correct user object by id', function() {
+      var users = [ { id: '0', email: 'a', name: 'b', address: 'c' }, { id: '1', email: 'd', name: 'e', address: 'f' } ];
+
+      var cbSpy = jasmine.createSpy( printUserProps );
+
+      getUserById( users, '0', cbSpy );
+
+      expect( cbSpy ).toHaveBeenCalledWith( users[0] );
+    });
+  });
+});
