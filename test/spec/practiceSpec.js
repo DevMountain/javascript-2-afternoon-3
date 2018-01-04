@@ -148,8 +148,16 @@ describe('callbackPractice', function () {
 
       each( arr, cbSpy );
 
-      expect( cbSpy ).toHaveBeenCalledWith( jasmine.any(Number), jasmine.any(String) );
       expect( cbSpy.calls.count() ).toEqual( arr.length );
+
+      expect( cbSpy.calls.argsFor(0)[0] ).toEqual(0);
+      expect( cbSpy.calls.argsFor(0)[1] ).toEqual('a');
+
+      expect( cbSpy.calls.argsFor(1)[0] ).toEqual(1);
+      expect( cbSpy.calls.argsFor(1)[1] ).toEqual('b');
+
+      expect( cbSpy.calls.argsFor(2)[0] ).toEqual(2);
+      expect( cbSpy.calls.argsFor(2)[1] ).toEqual('c');
     });
   });
 
