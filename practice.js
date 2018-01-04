@@ -18,9 +18,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
 */
 
 //Code Here
-function logFirstName( firstName ) {
-  console.log(firstName);
-}
+
+
 
 /*
   Write a function called first that has two parameters, arr ( an array ) and cb ( a callback function ).
@@ -28,9 +27,8 @@ function logFirstName( firstName ) {
 */
 
 //Code Here
-function first( arr, cb ) {
-  cb( arr[0] );
-}
+
+
 
 /*
   Invoke the first function and pass in the given names array for the first argument and pass in the logFirstName function you created for the second argument.
@@ -38,7 +36,6 @@ function first( arr, cb ) {
 */
 
 //Code Here
-first( names, logFirstName );
 
 
 
@@ -54,9 +51,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
 */
 
 //Code Here
-function logLastName( lastName ) {
-  console.log(lastName);
-}
+
+
 
 /*
   Write a function called last that has two parameters, arr ( an array ) and cb ( a callback function ).
@@ -64,9 +60,8 @@ function logLastName( lastName ) {
 */
 
 //Code Here
-function last( arr, cb ) {
-  cb( arr[ arr.length - 1 ] );
-}
+
+
 
 /*
   Invoke the last function and pass in the given names array for the last argument and pass in the logLastName function you created for the second argument.
@@ -74,7 +69,6 @@ function last( arr, cb ) {
 */
 
 //Code Here
-last( names, logLastName );
 
 
 
@@ -86,9 +80,8 @@ last( names, logLastName );
 */
 
 //Code Here
-function logProduct( product ) {
-  console.log( product );
-}
+
+
 
 /*
   Write a function called multiply that takes in three parameters: num1, num2, and cb.
@@ -96,9 +89,8 @@ function logProduct( product ) {
 */
 
 //Code Here
-function multiply( num1, num2, cb ) {
-  cb( num1 * num2 );
-}
+
+
 
 /*
   Invoke the multiply function and pass in two numbers and the logProduct function you created.
@@ -106,7 +98,6 @@ function multiply( num1, num2, cb ) {
 */
 
 //Code Here
-multiply( 2, 3, logProduct );
 
 
 
@@ -127,13 +118,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Missy', 'Blaine', 'Joe'];
 */
 
 //Code Here
-function printContainMessage( name, result ) {
-  if ( result === true ) {
-    console.log(name + " is in the array");
-  } else if ( result === false ) {
-    console.log(name + " is not in the array");
-  }
-}
+
+
 
 /*
   Write a function called contains that takes that has three parameters: array, name, and cb.
@@ -143,11 +129,8 @@ function printContainMessage( name, result ) {
 */
 
 //Code Here
-function contains( array, name, cb ) {
-  var result = array.includes( name );
 
-  cb( name, result );
-}
+
 
 /*
   Invoke the contains function and pass in the given names array, "Joe", and the printContainMessage function you created earlier.
@@ -155,7 +138,6 @@ function contains( array, name, cb ) {
 */
 
 //Code Here
-contains( names, "Joe", printContainMessage );
 
 
 
@@ -172,9 +154,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Tyler', 'Missy', 'Cahlan', 'Joe'];
 */
 
 //Code Here
-function printUnique( array ) {
-  console.log( array );
-}
+
+
 
 /*
   Write a function called unique that takes has two parameters: array and cb.
@@ -182,17 +163,8 @@ function printUnique( array ) {
 */
 
 //Code Here
-function unique( array, cb ) {
-  var uniqueArray = [];
 
-  for( var i = 0; i < array.length; i++ ) {
-    if ( !uniqueArray.includes( array[i] ) ) {
-      uniqueArray.push( array[i] );
-    }
-  }
 
-  cb( uniqueArray );
-}
 
 /*
   Invoke the unique function and pass in the given names array and the printUnique function you created earlier.
@@ -200,7 +172,6 @@ function unique( array, cb ) {
 */
 
 //Code Here
-unique( names, printUnique );
 
 
 
@@ -219,9 +190,8 @@ var names = ['Tyler', 'Cahlan', 'Ryan'];
 */
 
 //Code Here
-function printEachIndexAndValue( index, value ) {
-  console.log("The element in the " + index + " position is " + value);
-}
+
+
 
 /*
   Write a function called each that has two parameters: array and cb.
@@ -231,11 +201,8 @@ function printEachIndexAndValue( index, value ) {
 */
 
 //Code Here
-function each( array, cb ) {
-  for( var i = 0; i < array.length; i++ ) {
-    cb( i, array[i] );
-  } 
-}
+
+
 
 /*
   Invoke the each function and pass in the given names array and the printUnique function you created earlier.
@@ -244,7 +211,6 @@ function each( array, cb ) {
 */
 
 //Code Here
-each( names, printEachIndexAndValue );
 
 
 
@@ -275,9 +241,8 @@ var users = [
 */
 
 //Code Here
-function printUserProps( user ) {
-  console.log("The user with the id of " + user.id + " has the email of " + user.email + ", the name of " + user.name + ", and the address of " + user.address );
-}
+
+
 
 /*
   Write a function called getUserById that has three parameters: array, id, and cb.
@@ -286,17 +251,8 @@ function printUserProps( user ) {
 */
 
 //Code Here
-function getUserById( array, id, cb ) {
-  var user = {};
 
-  for( var i = 0; i < array.length; i++ ) {
-    if( array[i].id === id ) {
-      user = array[i];
-    }
-  }
 
-  cb( user );
-}
 
 /*
   Invoke the getUserById function and pass in the given users array, '15a', and the printUserProps function you created earlier.
@@ -305,5 +261,5 @@ function getUserById( array, id, cb ) {
 */
 
 //Code Here
-getUserById( users, '15a', printUserProps );
+
 
