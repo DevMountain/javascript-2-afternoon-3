@@ -26,7 +26,8 @@ One of the biggest tools at the developer's disposal is the browser's built-in d
 <summary> <code> Callbacks </code> </summary>
 
 ```js
-// Most simply, a callback is a function that is passed as an argument to another function. That might look one of two ways:
+// Most simply, a callback is a function that is passed as an argument to another function.
+// That might look one of two ways:
 
 // Example 1
 
@@ -36,17 +37,23 @@ function imDoingIt() {
   return 'Did it!';
 }
 
-// This function expects a function as an argument for our cb parameter. Functions that receive functions as arguments are called higher-order functions. We know it expects a function because we're invoking cb within the functions body. cb is not a special keyword. Like any parameter, it's just a placeholder. We could call it catfish or hotdog if we wanted. 
+// This function expects a function as an argument for our cb parameter.
+// Functions that receive functions as arguments are called higher-order functions.
+// We know it expects a function because we're invoking cb within the functions body.
+// cb is not a special keyword. Like any parameter, it's just a placeholder.
+// We could call it catfish or hotdog if we wanted, but that wouldn't make a lot of sense. 
 
 function doTheThing(cb) {
   return cb();
 }
 
-// Here we invoke doTheThing, passing it the imDoingIt function's definition (that just means we didn't invoke the passed in function). The imDoingIt function is aliased as cb in the function above, which we then invoke in our function body.
+// Here we invoke doTheThing, passing it the imDoingIt function's definition (that just means we didn't invoke the passed in function).
+// The imDoingIt function is aliased as cb in the function above, which we then invoke in our function body.
 
 doTheThing(imDoingIt); // the result of calling this function is 'Did it!'
 
-// In this example, we do the exact same thing, except instead of using a named function (imDoingIt) we're using an anonymous function as the passed in argument to doTheThing. An anonymous function is just a function without a name.
+// In this example, we do the exact same thing, except instead of using a named function (imDoingIt) we're using an anonymous function as the passed in argument to doTheThing.
+// An anonymous function is just a function without a name.
 
 // Example 2
 
@@ -58,9 +65,9 @@ doTheThing(function() {
   return 'Did it!';
 });
 
-// The callback pattern is often used in asynchronous programming, and we'll see more of that later. Another common use case for the callback patter is code reuse. Let's imagine you're processing bank deposits and withdrawals. You might write your code like this with callbacks.
-
-// a simple asynchronous callback example (note: this is not working code and is for example only)
+// The callback pattern is often used in asynchronous programming,
+// and we'll see more of that later, but here's a simple example
+// (note: this is hypothetical code (pseudo code) and is for example only):
 
 function login(processUser) {
   let user = fetchUser() // This is a fake function that takes time to run. It will log the user in, getting the users data                            // from the server.
@@ -75,10 +82,15 @@ function processUser(user) {
 // log the user in and when that's done, process them
 login(processUser)
 
+//Another common use case for the callback patter is code reuse.
+// Let's imagine you're processing bank transactions (deposits and withdrawals).
+// You might write your code like this with callbacks.
+
 // Transaction is a function that expects a dollar amount, and a callback function called action
 
 function transaction(amt, action) {
-  // rather than adding this if statement to make sure we're dealing with valid dollar amounts in both the deposit and withdraw functions below, we can write it once here. This helps keep our code D-R-Y (Don't Repeat Yourself)
+  // rather than adding this if statement to make sure we're dealing with valid dollar amounts in both the deposit and withdraw functions below, we can write it once here.
+  // This helps keep our code D-R-Y (Don't Repeat Yourself)
   if (amt <= 0) {
     return 'Please use a valid amount';
   }
@@ -96,12 +108,16 @@ function withdraw(amt) {
   return 'You withdrew $' + amt;
 }
 
-// In these two invocations we call our transaction function with an amount, and a callback representing which action we want to perform with the given amounts.
+// In these two invocations we call our transaction function with an amount,
+// and a callback representing which action we want to perform with the given amounts.
+
 transaction(100, deposit);
 
 transaction(50, withdraw);
 
-// As you can see above, callbacks provide a pattern for reusing chunks of code and grouping/reducing our logic (in this case our simple if statement that applies to both deposits and withdrawls.
+// As you can see above, callbacks provide a pattern for reusing chunks of
+// code and grouping/reducing our logic (in this case our simple if statement
+// that applies to both deposits and withdrawls.
 
 // In review:
 
