@@ -37,7 +37,7 @@ function imDoingIt() {
   return 'Did it!';
 }
 
-// This function expects a function as an argument for our cb parameter.
+// This next function expects a function as an argument for our cb parameter.
 // Functions that receive functions as arguments are called higher-order functions.
 // We know it expects a function because we're invoking cb within the functions body.
 // cb is not a special keyword. Like any parameter, it's just a placeholder.
@@ -52,10 +52,10 @@ function doTheThing(cb) {
 
 doTheThing(imDoingIt); // the result of calling this function is 'Did it!'
 
+// Example 2
+
 // In this example, we do the exact same thing, except instead of using a named function (imDoingIt) we're using an anonymous function as the passed in argument to doTheThing.
 // An anonymous function is just a function without a name.
-
-// Example 2
 
 function doTheThing(cb) {
   return cb();
@@ -65,14 +65,16 @@ doTheThing(function() {
   return 'Did it!';
 });
 
+// ------------------
+
 // The callback pattern is often used in asynchronous programming,
 // and we'll see more of that later, but here's a simple example
 // (note: this is hypothetical code (pseudo code) and is for example only):
 
-function login(processUser) {
+function login(processUserCbFunc) {
   let user = fetchUser() // This is a fake function that takes time to run. It will log the user in, getting the users data                            // from the server.
   // When fetchUser finishes running, we want to tell JavaScript to do something with the user's data
-  processUser(user);
+  processUserCbFunc(user);
 }
 
 function processUser(user) {
@@ -81,6 +83,8 @@ function processUser(user) {
 
 // log the user in and when that's done, process them
 login(processUser)
+
+// --------------------
 
 //Another common use case for the callback patter is code reuse.
 // Let's imagine you're processing bank transactions (deposits and withdrawals).
@@ -108,16 +112,20 @@ function withdraw(amt) {
   return 'You withdrew $' + amt;
 }
 
-// In these two invocations we call our transaction function with an amount,
+// In these four invocations we call our transaction function with an amount,
 // and a callback representing which action we want to perform with the given amounts.
 
-transaction(100, deposit);
+transaction(100, deposit); // 'You deposited $100'
 
-transaction(50, withdraw);
+transaction(50, withdraw); // 'You withdrew $50'
+
+transaction(-40, withdraw); // 'Please use a valid amount'
+
+transaction(-100, deposit); // 'Please use a valid amount'
 
 // As you can see above, callbacks provide a pattern for reusing chunks of
 // code and grouping/reducing our logic (in this case our simple if statement
-// that applies to both deposits and withdrawls.
+// that applies to both deposits and withdrawls).
 
 // In review:
 
