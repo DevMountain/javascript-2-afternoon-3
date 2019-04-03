@@ -86,7 +86,7 @@ login(processUser)
 
 // --------------------
 
-//Another common use case for the callback patter is code reuse.
+//Another common use case for the callback pattern is code reuse.
 // Let's imagine you're processing bank transactions (deposits and withdrawals).
 // You might write your code like this with callbacks.
 
@@ -131,7 +131,7 @@ transaction(-100, deposit); // 'Please use a valid amount'
 
 // a callback is a function passed as an argument to another functions invocation
 // a higher-order function is any function that receives a function as an argument to it's invocation
-  // from above: transaction(deposit) => transaction would be the higher-order function and deposit would be the callback
+// from above: transaction(deposit) => transaction would be the higher-order function and deposit would be the callback
 // The callback pattern (or more simply, using callbacks in our code) allows us to write cleaner code with less repetition
 // Callbacks are often used for asynchronous programming (think requesting data, logging a user in, etc.)
 ```
