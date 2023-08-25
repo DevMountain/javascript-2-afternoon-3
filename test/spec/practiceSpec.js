@@ -5,11 +5,11 @@ describe('callbackPractice', function () {
 			expect(first).toEqual(jasmine.any(Function));
 		})
 		it('should return the first item of a passed array to the callback', function () {
-			var arr = ['test', 'no'];
-			var callback = jasmine.createSpy(function (str) {
+			let arr = ['test', 'no'];
+			let callback = jasmine.createSpy(function (str) {
 				return str
 			})
-			var test = first(arr, callback);
+			let test = first(arr, callback);
 			expect(callback).toHaveBeenCalledWith('test');
 		})
 	})
@@ -19,11 +19,11 @@ describe('callbackPractice', function () {
 			expect(last).toEqual(jasmine.any(Function));
 		})
 		it('should return the last item of a passed array to the callback', function () {
-			var arr = ['test', 'no'];
-			var callback = jasmine.createSpy(function (str) {
+			let arr = ['test', 'no'];
+			let callback = jasmine.createSpy(function (str) {
 				return str
 			})
-			var test = last(arr, callback);
+			let test = last(arr, callback);
 			expect(callback).toHaveBeenCalledWith('no');
 		})
 	})
@@ -33,15 +33,15 @@ describe('callbackPractice', function () {
 			expect(multiply).toEqual(jasmine.any(Function));
 		})
 		it('should multiply the first two parameters and pass the result to the callback', function () {
-			var callback = jasmine.createSpy(function (num) {
+			let callback = jasmine.createSpy(function (num) {
 				return num
 			})
-			var test = multiply(25, 4, callback);
+			let test = multiply(25, 4, callback);
 			expect(callback).toHaveBeenCalledWith(100);
 		})
 	})
 	describe('contains', function () {
-		var arr, callback;
+		let arr, callback;
 		beforeEach(function () {
 			callback = jasmine.createSpy(function (bool) {
 				return bool
@@ -58,16 +58,16 @@ describe('callbackPractice', function () {
 			expect(callback).toHaveBeenCalledWith(jasmine.any(Boolean));
 		})
 		it('should return true to the callback if the name is in the array', function () {
-			var trueTest = contains(arr, 'tester', callback);
+			let trueTest = contains(arr, 'tester', callback);
 			expect(callback).toHaveBeenCalledWith(true);
 		})
 		it('should return false to the callback if the name is not in the array', function () {
-			var falseTest = contains(arr, 'craig', callback);
+			let falseTest = contains(arr, 'craig', callback);
 			expect(callback).toHaveBeenCalledWith(false);
 		})
 	})
 	describe('uniq', function () {
-		var arr, callback;
+		let arr, callback;
 		beforeEach(function () {
 			callback = jasmine.createSpy(function (arr) {
 				return arr;
@@ -84,12 +84,12 @@ describe('callbackPractice', function () {
 		})
 		it('should return an array to the callback where all duplicates are removed', function () {
 			uniq(arr, callback);
-			var expected = ['tester', 'alice', 'bob', 'charlie', 'danielle']
+			let expected = ['tester', 'alice', 'bob', 'charlie', 'danielle']
 			expect(callback.calls.argsFor(0)[0].sort()).toEqual(expected.sort())
 		})
 	})
 	describe('each', function () {
-		var arr, callback;
+		let arr, callback;
 		beforeEach(function () {
 			callback = jasmine.createSpy(function (item, index) {
 				return;
@@ -110,7 +110,7 @@ describe('callbackPractice', function () {
 		})
 	})
 	describe('getUserById', function () {
-		var arr, callback;
+		let arr, callback;
 		beforeEach(function () {
 			callback = jasmine.createSpy(function (obj) {
 				return;
