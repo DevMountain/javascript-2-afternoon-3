@@ -35,13 +35,13 @@ getJasmineRequireObj().console = function(jRequire, j$) {
 
 getJasmineRequireObj().ConsoleReporter = function() {
 
-  var noopTimer = {
+  let noopTimer = {
     start: function(){},
     elapsed: function(){ return 0; }
   };
 
   function ConsoleReporter(options) {
-    var print = options.print,
+  let print = options.print,
       showColors = options.showColors || false,
       onComplete = options.onComplete || function() {},
       timer = options.timer || noopTimer,
@@ -70,14 +70,14 @@ getJasmineRequireObj().ConsoleReporter = function() {
 
     this.jasmineDone = function() {
       printNewline();
-      for (var i = 0; i < failedSpecs.length; i++) {
+      for (let i = 0; i < failedSpecs.length; i++) {
         specFailureDetails(failedSpecs[i]);
       }
 
       if(specCount > 0) {
         printNewline();
 
-        var specCounts = specCount + ' ' + plural('spec', specCount) + ', ' +
+        let specCounts = specCount + ' ' + plural('spec', specCount) + ', ' +
           failureCount + ' ' + plural('failure', failureCount);
 
         if (pendingCount) {
@@ -90,7 +90,7 @@ getJasmineRequireObj().ConsoleReporter = function() {
       }
 
       printNewline();
-      var seconds = timer.elapsed() / 1000;
+      let seconds = timer.elapsed() / 1000;
       print('Finished in ' + seconds + ' ' + plural('second', seconds));
       printNewline();
 
@@ -144,17 +144,17 @@ getJasmineRequireObj().ConsoleReporter = function() {
     }
 
     function repeat(thing, times) {
-      var arr = [];
-      for (var i = 0; i < times; i++) {
+      let arr = [];
+      for (let i = 0; i < times; i++) {
         arr.push(thing);
       }
       return arr;
     }
 
     function indent(str, spaces) {
-      var lines = (str || '').split('\n');
-      var newArr = [];
-      for (var i = 0; i < lines.length; i++) {
+      let lines = (str || '').split('\n');
+      let newArr = [];
+      for (let i = 0; i < lines.length; i++) {
         newArr.push(repeat(' ', spaces).join('') + lines[i]);
       }
       return newArr.join('\n');
@@ -164,8 +164,8 @@ getJasmineRequireObj().ConsoleReporter = function() {
       printNewline();
       print(result.fullName);
 
-      for (var i = 0; i < result.failedExpectations.length; i++) {
-        var failedExpectation = result.failedExpectations[i];
+      for (let i = 0; i < result.failedExpectations.length; i++) {
+        let failedExpectation = result.failedExpectations[i];
         printNewline();
         print(indent(failedExpectation.message, 2));
         print(indent(failedExpectation.stack, 2));
@@ -175,7 +175,7 @@ getJasmineRequireObj().ConsoleReporter = function() {
     }
 
     function suiteFailureDetails(result) {
-      for (var i = 0; i < result.failedExpectations.length; i++) {
+      for (let i = 0; i < result.failedExpectations.length; i++) {
         printNewline();
         print(colored('red', 'An error was thrown in an afterAll'));
         printNewline();
