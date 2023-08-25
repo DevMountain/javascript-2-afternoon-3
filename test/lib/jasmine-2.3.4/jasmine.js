@@ -20,8 +20,8 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-var getJasmineRequireObj = (function (jasmineGlobal) {
-  var jasmineRequire;
+let getJasmineRequireObj = (function (jasmineGlobal) {
+  let jasmineRequire;
 
   if (typeof module !== 'undefined' && module.exports) {
     jasmineGlobal = global;
@@ -38,7 +38,7 @@ var getJasmineRequireObj = (function (jasmineGlobal) {
   }
 
   getJasmineRequire().core = function(jRequire) {
-    var j$ = {};
+    let j$ = {};
 
     jRequire.base(j$, jasmineGlobal);
     j$.util = jRequire.util();
@@ -78,7 +78,7 @@ var getJasmineRequireObj = (function (jasmineGlobal) {
 })(this);
 
 getJasmineRequireObj().requireMatchers = function(jRequire, j$) {
-  var availableMatchers = [
+  let availableMatchers = [
       'toBe',
       'toBeCloseTo',
       'toBeDefined',
@@ -99,8 +99,8 @@ getJasmineRequireObj().requireMatchers = function(jRequire, j$) {
     ],
     matchers = {};
 
-  for (var i = 0; i < availableMatchers.length; i++) {
-    var name = availableMatchers[i];
+  for (let i = 0; i < availableMatchers.length; i++) {
+   let name = availableMatchers[i];
     matchers[name] = jRequire[name](j$);
   }
 
@@ -121,7 +121,7 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
   };
 
   j$.getEnv = function(options) {
-    var env = j$.currentEnv_ = j$.currentEnv_ || new j$.Env(options);
+    let env = j$.currentEnv_ = j$.currentEnv_ || new j$.Env(options);
     //jasmine. singletons in here (setTimeout blah blah).
     return env;
   };
@@ -172,26 +172,26 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
 
   j$.createSpy = function(name, originalFn) {
 
-    var spyStrategy = new j$.SpyStrategy({
+    let spyStrategy = new j$.SpyStrategy({
         name: name,
         fn: originalFn,
         getSpy: function() { return spy; }
       }),
       callTracker = new j$.CallTracker(),
       spy = function() {
-        var callData = {
+        let callData = {
           object: this,
           args: Array.prototype.slice.apply(arguments)
         };
 
         callTracker.track(callData);
-        var returnValue = spyStrategy.exec.apply(this, arguments);
+        let returnValue = spyStrategy.exec.apply(this, arguments);
         callData.returnValue = returnValue;
 
         return returnValue;
       };
 
-    for (var prop in originalFn) {
+    for (let prop in originalFn) {
       if (prop === 'and' || prop === 'calls') {
         throw new Error('Jasmine spies would overwrite the \'and\' and \'calls\' properties on the object being spied upon');
       }
@@ -222,8 +222,8 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
     if (!j$.isArray_(methodNames) || methodNames.length === 0) {
       throw 'createSpyObj requires a non-empty array of method names to create spies for';
     }
-    var obj = {};
-    for (var i = 0; i < methodNames.length; i++) {
+    let obj = {};
+    for (let i = 0; i < methodNames.length; i++) {
       obj[methodNames[i]] = j$.createSpy(baseName + '.' + methodNames[i]);
     }
     return obj;
@@ -232,10 +232,10 @@ getJasmineRequireObj().base = function(j$, jasmineGlobal) {
 
 getJasmineRequireObj().util = function() {
 
-  var util = {};
+  let util = {};
 
   util.inherit = function(childClass, parentClass) {
-    var Subclass = function() {
+    let Subclass = function() {
     };
     Subclass.prototype = parentClass.prototype;
     childClass.prototype = new Subclass();
@@ -251,8 +251,8 @@ getJasmineRequireObj().util = function() {
   };
 
   util.argsToArray = function(args) {
-    var arrayOfArgs = [];
-    for (var i = 0; i < args.length; i++) {
+    let arrayOfArgs = [];
+    for (let i = 0; i < args.length; i++) {
       arrayOfArgs.push(args[i]);
     }
     return arrayOfArgs;
@@ -263,7 +263,7 @@ getJasmineRequireObj().util = function() {
   };
 
   util.arrayContains = function(array, search) {
-    var i = array.length;
+    let i = array.length;
     while (i--) {
       if (array[i] === search) {
         return true;
@@ -277,8 +277,8 @@ getJasmineRequireObj().util = function() {
       return obj.slice();
     }
 
-    var cloned = {};
-    for (var prop in obj) {
+    let cloned = {};
+    for (let prop in obj) {
       if (obj.hasOwnProperty(prop)) {
         cloned[prop] = obj[prop];
       }
@@ -321,7 +321,7 @@ getJasmineRequireObj().Spec = function(j$) {
   }
 
   Spec.prototype.addExpectationResult = function(passed, data, isError) {
-    var expectationResult = this.expectationResultFactory(data);
+    let expectationResult = this.expectationResultFactory(data);
     if (passed) {
       this.result.passedExpectations.push(expectationResult);
     } else {
@@ -338,7 +338,7 @@ getJasmineRequireObj().Spec = function(j$) {
   };
 
   Spec.prototype.execute = function(onComplete, enabled) {
-    var self = this;
+    let self = this;
 
     this.onStart(this);
 
@@ -347,8 +347,8 @@ getJasmineRequireObj().Spec = function(j$) {
       return;
     }
 
-    var fns = this.beforeAndAfterFns();
-    var allFns = fns.befores.concat(this.queueableFn).concat(fns.afters);
+    let fns = this.beforeAndAfterFns();
+    let allFns = fns.befores.concat(this.queueableFn).concat(fns.afters);
 
     this.queueRunnerFactory({
       queueableFns: allFns,
@@ -426,8 +426,8 @@ getJasmineRequireObj().Spec = function(j$) {
     return this.getSpecName(this);
   };
 
-  var extractCustomPendingMessage = function(e) {
-    var fullMessage = e.toString(),
+  let extractCustomPendingMessage = function(e) {
+    let fullMessage = e.toString(),
         boilerplateStart = fullMessage.indexOf(Spec.pendingSpecExceptionMessage),
         boilerplateEnd = boilerplateStart + Spec.pendingSpecExceptionMessage.length;
 
@@ -451,34 +451,34 @@ getJasmineRequireObj().Env = function(j$) {
   function Env(options) {
     options = options || {};
 
-    var self = this;
-    var global = options.global || j$.getGlobal();
+    let self = this;
+    let global = options.global || j$.getGlobal();
 
-    var totalSpecsDefined = 0;
+    let totalSpecsDefined = 0;
 
-    var catchExceptions = true;
+    let catchExceptions = true;
 
-    var realSetTimeout = j$.getGlobal().setTimeout;
-    var realClearTimeout = j$.getGlobal().clearTimeout;
+    let realSetTimeout = j$.getGlobal().setTimeout;
+    let realClearTimeout = j$.getGlobal().clearTimeout;
     this.clock = new j$.Clock(global, function () { return new j$.DelayedFunctionScheduler(); }, new j$.MockDate(global));
 
-    var runnableLookupTable = {};
-    var runnableResources = {};
+    let runnableLookupTable = {};
+    let runnableResources = {};
 
-    var currentSpec = null;
-    var currentlyExecutingSuites = [];
-    var currentDeclarationSuite = null;
-    var throwOnExpectationFailure = false;
+    let currentSpec = null;
+    let currentlyExecutingSuites = [];
+    let currentDeclarationSuite = null;
+    let throwOnExpectationFailure = false;
 
-    var currentSuite = function() {
+    let currentSuite = function() {
       return currentlyExecutingSuites[currentlyExecutingSuites.length - 1];
     };
 
-    var currentRunnable = function() {
+    let currentRunnable = function() {
       return currentSpec || currentSuite();
     };
 
-    var reporter = new j$.ReportDispatcher([
+    let reporter = new j$.ReportDispatcher([
       'jasmineStarted',
       'jasmineDone',
       'suiteStarted',
@@ -502,25 +502,25 @@ getJasmineRequireObj().Env = function(j$) {
       if(!currentRunnable()) {
         throw new Error('Matchers must be added in a before function or a spec');
       }
-      var customMatchers = runnableResources[currentRunnable().id].customMatchers;
-      for (var matcherName in matchersToAdd) {
+      let customMatchers = runnableResources[currentRunnable().id].customMatchers;
+      for (let matcherName in matchersToAdd) {
         customMatchers[matcherName] = matchersToAdd[matcherName];
       }
     };
 
     j$.Expectation.addCoreMatchers(j$.matchers);
 
-    var nextSpecId = 0;
-    var getNextSpecId = function() {
+    let nextSpecId = 0;
+    let getNextSpecId = function() {
       return 'spec' + nextSpecId++;
     };
 
-    var nextSuiteId = 0;
-    var getNextSuiteId = function() {
+    let nextSuiteId = 0;
+    let getNextSuiteId = function() {
       return 'suite' + nextSuiteId++;
     };
 
-    var expectationFactory = function(actual, spec) {
+    let expectationFactory = function(actual, spec) {
       return j$.Expectation.Factory({
         util: j$.matchersUtil,
         customEqualityTesters: runnableResources[spec.id].customEqualityTesters,
@@ -534,8 +534,8 @@ getJasmineRequireObj().Env = function(j$) {
       }
     };
 
-    var defaultResourcesForRunnable = function(id, parentRunnableId) {
-      var resources = {spies: [], customEqualityTesters: [], customMatchers: {}};
+    let defaultResourcesForRunnable = function(id, parentRunnableId) {
+      let resources = {spies: [], customEqualityTesters: [], customMatchers: {}};
 
       if(runnableResources[parentRunnableId]){
         resources.customEqualityTesters = j$.util.clone(runnableResources[parentRunnableId].customEqualityTesters);
@@ -545,14 +545,14 @@ getJasmineRequireObj().Env = function(j$) {
       runnableResources[id] = resources;
     };
 
-    var clearResourcesForRunnable = function(id) {
+    let clearResourcesForRunnable = function(id) {
         spyRegistry.clearSpies();
         delete runnableResources[id];
     };
 
-    var beforeAndAfterFns = function(suite) {
+    let beforeAndAfterFns = function(suite) {
       return function() {
-        var befores = [],
+        let befores = [],
           afters = [];
 
         while(suite) {
@@ -569,12 +569,12 @@ getJasmineRequireObj().Env = function(j$) {
       };
     };
 
-    var getSpecName = function(spec, suite) {
+    let getSpecName = function(spec, suite) {
       return suite.getFullName() + ' ' + spec.description;
     };
 
     // TODO: we may just be able to pass in the fn instead of wrapping here
-    var buildExpectationResult = j$.buildExpectationResult,
+    let buildExpectationResult = j$.buildExpectationResult,
         exceptionFormatter = new j$.ExceptionFormatter(),
         expectationResultFactory = function(attrs) {
           attrs.messageFormatter = exceptionFormatter.message;
