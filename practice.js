@@ -30,7 +30,7 @@
 // Code Here 
 
 // Do not edit the code below.
-var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+let names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
 first(names, function(firstName){
   console.log('The first name in names is ' + firstName);
@@ -142,7 +142,7 @@ each(names, function(item, indice){
 // Code here
 
 // Do not edit the code below.
-var users = [
+let users = [
   {
     id: '12d',
     email: 'tyler@gmail.com',
